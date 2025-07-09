@@ -55,7 +55,7 @@ python manage.py createsuperuser
 ```bash
 python manage.py runserver
 ```
-##🔐 Authentication (JWT)
+## 🔐 Authentication (JWT)
 
 This API uses JWT tokens for authentication.
 
@@ -84,7 +84,7 @@ Response:
 ```
 Use this access token for all authenticated requests.
 
-##📊 Expense/Income API
+## 📊 Expense/Income API
 
 All endpoints below require the Authorization header:
 ```json
@@ -93,10 +93,10 @@ Content-Type: application/json
 ```
 
 ## 🔸 List All My Expenses (Paginated)
-#GET /api/expenses/
+# GET /api/expenses/
 
 ## 🔸 Add New Expense
-#POST /api/expenses/
+# POST /api/expenses/
 ```json
 {
   "title": "Dinner",
