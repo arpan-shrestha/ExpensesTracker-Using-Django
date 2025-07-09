@@ -59,7 +59,7 @@ python manage.py runserver
 
 This API uses JWT tokens for authentication.
 
-##🔸 Register
+## 🔸 Register
 #POST /api/auth/register/
 ```json
 {
@@ -68,7 +68,7 @@ This API uses JWT tokens for authentication.
   "password": "yourpassword"
 }
 ```
-##🔸 Login
+## 🔸 Login
 #POST /api/auth/login/
 ```json
 {
