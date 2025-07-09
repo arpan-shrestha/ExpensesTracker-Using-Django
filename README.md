@@ -59,8 +59,8 @@ python manage.py runserver
 
 This API uses JWT tokens for authentication.
 
-## 🔸 Register
-#POST /api/auth/register/
+###🔸 Register
+POST /api/auth/register/
 ```json
 {
   "username": "arpan123",
@@ -68,8 +68,8 @@ This API uses JWT tokens for authentication.
   "password": "yourpassword"
 }
 ```
-## 🔸 Login
-#POST /api/auth/login/
+### 🔸 Login
+POST /api/auth/login/
 ```json
 {
   "username": "arpan123",
@@ -92,11 +92,11 @@ Authorization: Bearer <access-token>
 Content-Type: application/json
 ```
 
-## 🔸 List All My Expenses (Paginated)
-# GET /api/expenses/
+### 🔸 List All My Expenses (Paginated)
+GET /api/expenses/
 
-## 🔸 Add New Expense
-# POST /api/expenses/
+### 🔸 Add New Expense
+POST /api/expenses/
 ```json
 {
   "title": "Dinner",
@@ -107,11 +107,11 @@ Content-Type: application/json
   "tax_type": "flat"
 }
 ```
-## 🔸 Get Specific Expense
-# GET /api/expenses/{id}/
+### 🔸 Get Specific Expense
+GET /api/expenses/{id}/
 
-## 🔸 Update Expense
-# PUT /api/expenses/{id}/
+### 🔸 Update Expense
+PUT /api/expenses/{id}/
 ```json
 {
   "title": "Dinner with Friends",
@@ -122,8 +122,8 @@ Content-Type: application/json
   "tax_type": "percentage"
 }
 ```
-## 🔸 Delete Expense
-# DELETE /api/expenses/{id}/
+### 🔸 Delete Expense
+ DELETE /api/expenses/{id}/
 
 ## 🧠 Business Logic
 
@@ -131,10 +131,10 @@ Flat tax → total = amount + tax
 Percentage tax → total = amount + (amount * tax / 100)
 Example:
 
-Amount	Tax Type	Tax	Total
-100	flat	10	110.0
-100	percent	10	110.0
-100	flat	0	100.0
+|Amount|	Tax| Type|	Tax	Total|
+|100|	flat|	10|	110.0|
+|100|	percent|	10|	110.0|
+|100|	flat|	0|	100.0|
 
 ## ✅ Permissions
 
@@ -180,7 +180,7 @@ Regular User	✅	❌	✅ (own only)
   ]
 }
 ```
-🧪 Testing Tips with Postman
+## 🧪 Testing Tips with Postman
 ```json
 Register → /api/auth/register/
 Login → /api/auth/login/ → Copy access token
@@ -188,16 +188,15 @@ Set Header:
 Authorization: Bearer <access-token>
 Test /api/expenses/ endpoints
 ```
-🐛 Common Issues
-
-## Issue	Fix
+##  🐛 Common Issues
+### Issue	Fix
 401 Unauthorized	Missing or invalid JWT in Authorization header
 400 Bad Request	Missing required fields in POST body
 403 Forbidden	Regular user accessing other user's data
 CSRF Token missing (HTML forms)	Use @csrf_exempt in dev or enable CSRF in forms
 no such table: auth_user	Run python manage.py migrate
 
-##📁 Project Structure (Important Files)
+## 📁 Project Structure (Important Files)
 ```json
 ExpenseTracker/
 ├── expense/
