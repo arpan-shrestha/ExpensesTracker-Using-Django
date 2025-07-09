@@ -59,7 +59,7 @@ python manage.py runserver
 
 This API uses JWT tokens for authentication.
 
-###🔸 Register
+### 🔸 Register
 POST /api/auth/register/
 ```json
 {
@@ -130,17 +130,20 @@ PUT /api/expenses/{id}/
 Flat tax → total = amount + tax
 Percentage tax → total = amount + (amount * tax / 100)
 Example:
-
-|Amount|	Tax| Type|	Tax	Total|
-|100|	flat|	10|	110.0|
-|100|	percent|	10|	110.0|
-|100|	flat|	0|	100.0|
+| Amount | Tax Type | Tax | Total |
+| ------ | -------- | --- | ----- |
+| 100    | flat     | 10  | 110.0 |
+| 100    | percent  | 10  | 110.0 |
+| 100    | flat     | 0   | 100.0 |
 
 ## ✅ Permissions
 
 User Type	Can View Own Records	Can View All Records	Can Create/Update/Delete
-Superuser	✅	✅	✅
-Regular User	✅	❌	✅ (own only)
+| User Type    | Can View Own Records | Can View All Records | Can Create/Update/Delete |
+| ------------ | -------------------- | -------------------- | ------------------------ |
+| Superuser    | ✅                    | ✅                    | ✅                        |
+| Regular User | ✅                    | ❌                    | ✅ (own only)             |
+
 
 ## 📋 API Response Examples
 ```json
@@ -181,7 +184,7 @@ Regular User	✅	❌	✅ (own only)
 }
 ```
 ## 🧪 Testing Tips with Postman
-```json
+```
 Register → /api/auth/register/
 Login → /api/auth/login/ → Copy access token
 Set Header:
@@ -197,7 +200,7 @@ CSRF Token missing (HTML forms)	Use @csrf_exempt in dev or enable CSRF in forms
 no such table: auth_user	Run python manage.py migrate
 
 ## 📁 Project Structure (Important Files)
-```json
+```
 ExpenseTracker/
 ├── expense/
 │   ├── models.py
