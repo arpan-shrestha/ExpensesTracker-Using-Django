@@ -92,10 +92,10 @@ Authorization: Bearer <access-token>
 Content-Type: application/json
 ```
 
-##🔸 List All My Expenses (Paginated)
+## 🔸 List All My Expenses (Paginated)
 #GET /api/expenses/
 
-##🔸 Add New Expense
+## 🔸 Add New Expense
 #POST /api/expenses/
 ```json
 {
@@ -107,11 +107,11 @@ Content-Type: application/json
   "tax_type": "flat"
 }
 ```
-##🔸 Get Specific Expense
-#GET /api/expenses/{id}/
+## 🔸 Get Specific Expense
+# GET /api/expenses/{id}/
 
-##🔸 Update Expense
-#PUT /api/expenses/{id}/
+## 🔸 Update Expense
+# PUT /api/expenses/{id}/
 ```json
 {
   "title": "Dinner with Friends",
@@ -122,10 +122,10 @@ Content-Type: application/json
   "tax_type": "percentage"
 }
 ```
-##🔸 Delete Expense
-#DELETE /api/expenses/{id}/
+## 🔸 Delete Expense
+# DELETE /api/expenses/{id}/
 
-##🧠 Business Logic
+## 🧠 Business Logic
 
 Flat tax → total = amount + tax
 Percentage tax → total = amount + (amount * tax / 100)
@@ -136,13 +136,13 @@ Amount	Tax Type	Tax	Total
 100	percent	10	110.0
 100	flat	0	100.0
 
-##✅ Permissions
+## ✅ Permissions
 
 User Type	Can View Own Records	Can View All Records	Can Create/Update/Delete
 Superuser	✅	✅	✅
 Regular User	✅	❌	✅ (own only)
 
-##📋 API Response Examples
+## 📋 API Response Examples
 ```json
 ➤ Single Expense
 {
@@ -190,7 +190,7 @@ Test /api/expenses/ endpoints
 ```
 🐛 Common Issues
 
-##Issue	Fix
+## Issue	Fix
 401 Unauthorized	Missing or invalid JWT in Authorization header
 400 Bad Request	Missing required fields in POST body
 403 Forbidden	Regular user accessing other user's data
@@ -217,12 +217,12 @@ ExpenseTracker/
 └── manage.py
 ```
 
-##📚 Dependencies
+## 📚 Dependencies
 - Django>=4.0
 - djangorestframework
 - djangorestframework-simplejwt
 
-##Install with:
+## Install with:
 ```bash
 pip install -r requirements.txt
 ```
