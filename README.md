@@ -55,21 +55,22 @@ python manage.py createsuperuser
 ```bash
 python manage.py runserver
 ```
-🔐 Authentication (JWT)
+##🔐 Authentication (JWT)
 
 This API uses JWT tokens for authentication.
 
-🔸 Register
-POST /api/auth/register/
-
+##🔸 Register
+#POST /api/auth/register/
+```json
 {
   "username": "arpan123",
   "email": "arpan@example.com",
   "password": "yourpassword"
 }
-🔸 Login
-POST /api/auth/login/
-
+```
+##🔸 Login
+#POST /api/auth/login/
+```json
 {
   "username": "arpan123",
   "password": "yourpassword"
@@ -80,20 +81,23 @@ Response:
   "refresh": "<refresh-token>",
   "access": "<access-token>"
 }
+```
 Use this access token for all authenticated requests.
 
-📊 Expense/Income API
+##📊 Expense/Income API
 
 All endpoints below require the Authorization header:
-
+```json
 Authorization: Bearer <access-token>
 Content-Type: application/json
-🔸 List All My Expenses (Paginated)
-GET /api/expenses/
+```
 
-🔸 Add New Expense
-POST /api/expenses/
+##🔸 List All My Expenses (Paginated)
+#GET /api/expenses/
 
+##🔸 Add New Expense
+#POST /api/expenses/
+```json
 {
   "title": "Dinner",
   "description": "Dinner at restaurant",
@@ -102,12 +106,13 @@ POST /api/expenses/
   "tax": 10.0,
   "tax_type": "flat"
 }
-🔸 Get Specific Expense
-GET /api/expenses/{id}/
+```
+##🔸 Get Specific Expense
+#GET /api/expenses/{id}/
 
-🔸 Update Expense
-PUT /api/expenses/{id}/
-
+##🔸 Update Expense
+#PUT /api/expenses/{id}/
+```json
 {
   "title": "Dinner with Friends",
   "description": "Updated description",
@@ -116,10 +121,11 @@ PUT /api/expenses/{id}/
   "tax": 10.0,
   "tax_type": "percentage"
 }
-🔸 Delete Expense
-DELETE /api/expenses/{id}/
+```
+##🔸 Delete Expense
+#DELETE /api/expenses/{id}/
 
-🧠 Business Logic
+##🧠 Business Logic
 
 Flat tax → total = amount + tax
 Percentage tax → total = amount + (amount * tax / 100)
@@ -129,13 +135,15 @@ Amount	Tax Type	Tax	Total
 100	flat	10	110.0
 100	percent	10	110.0
 100	flat	0	100.0
-✅ Permissions
+
+##✅ Permissions
 
 User Type	Can View Own Records	Can View All Records	Can Create/Update/Delete
 Superuser	✅	✅	✅
 Regular User	✅	❌	✅ (own only)
-📋 API Response Examples
 
+##📋 API Response Examples
+```json
 ➤ Single Expense
 {
   "id": 1,
@@ -171,23 +179,26 @@ Regular User	✅	❌	✅ (own only)
     }
   ]
 }
+```
 🧪 Testing Tips with Postman
-
+```json
 Register → /api/auth/register/
 Login → /api/auth/login/ → Copy access token
 Set Header:
 Authorization: Bearer <access-token>
 Test /api/expenses/ endpoints
+```
 🐛 Common Issues
 
-Issue	Fix
+##Issue	Fix
 401 Unauthorized	Missing or invalid JWT in Authorization header
 400 Bad Request	Missing required fields in POST body
 403 Forbidden	Regular user accessing other user's data
 CSRF Token missing (HTML forms)	Use @csrf_exempt in dev or enable CSRF in forms
 no such table: auth_user	Run python manage.py migrate
-📁 Project Structure (Important Files)
 
+##📁 Project Structure (Important Files)
+```json
 ExpenseTracker/
 ├── expense/
 │   ├── models.py
@@ -204,11 +215,12 @@ ExpenseTracker/
 │   ├── add_expense.html
 ├── db.sqlite3
 └── manage.py
+```
 
 ##📚 Dependencies
--Django>=4.0
--djangorestframework
--djangorestframework-simplejwt
+- Django>=4.0
+- djangorestframework
+- djangorestframework-simplejwt
 
 ##Install with:
 ```bash
