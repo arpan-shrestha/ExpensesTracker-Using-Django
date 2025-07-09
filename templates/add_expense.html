@@ -1,0 +1,40 @@
+<html>
+    <h2>Add Expense</h2>
+    <form id="expenseForm">
+    <input type="text" id="title" placeholder="Title" required />
+    <input type="number" id="amount" placeholder="Amount" required />
+    <select id="transaction_type">
+        <option value="debit">Debit</option>
+        <option value="credit">Credit</option>
+    </select>
+    <input type="number" id="tax" placeholder="Tax" value="0" />
+    <select id="tax_type">
+        <option value="flat">Flat</option>
+        <option value="percentage">Percentage</option>
+    </select>
+    <button type="submit">Submit</button>
+    </form>
+    <script>
+        document.getElementById("expenseForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const token = localStorage.getItem("token");
+        const response = await fetch("/api/expenses/", {
+            method: "POST",
+            headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+            title: document.getElementById("title").value,
+            amount: document.getElementById("amount").value,
+            transaction_type: document.getElementById("transaction_type").value,
+            tax: document.getElementById("tax").value,
+            tax_type: document.getElementById("tax_type").value,
+            }),
+        });
+        const data = await response.json();
+        alert("Expense Added!");
+        window.location.href = "/expenses/";
+        });
+    </script>
+</html>
